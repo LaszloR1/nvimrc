@@ -13,8 +13,10 @@ return {
   keys = {
     { '<leader>nt', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
   },
+  lazy = false,
   opts = {
     filesystem = {
+      hijack_netrw_behavior = 'open_current',
       filtered_items = {
         visible = true,
       },
