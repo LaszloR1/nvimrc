@@ -13,6 +13,7 @@ return {
       { '<S-h>', '<Cmd>BufferPrevious<CR>', { desc = 'Prev buffer' } },
       { '<S-l>', '<Cmd>BufferNext<CR>', { desc = 'Next buffer' } },
       { '<leader>bc', '<Cmd>BufferClose<CR>', { desc = 'Close buffer' } },
+      { '<leader>bcf', '<Cmd>BufferClose!<CR>', { desc = 'Close buffer (force)' } },
     },
     opts = {
       -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
