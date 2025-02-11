@@ -111,8 +111,9 @@ vim.opt.relativenumber = true
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.expandtab = true
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
@@ -209,6 +210,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function()
         vim.highlight.on_yank()
     end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "nix",
+	callback = function()
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.tabstop = 2
+	end
 })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
