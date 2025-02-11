@@ -111,6 +111,9 @@ vim.opt.relativenumber = true
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
@@ -219,6 +222,8 @@ if not vim.uv.fs_stat(lazypath) then
     end
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
+
+
 
 -- [[ Configure and install plugins ]]
 --
@@ -437,6 +442,17 @@ require('lazy').setup({
             'hrsh7th/cmp-nvim-lsp',
         },
         config = function()
+
+
+            local lspconfig = require('lspconfig')
+            lspconfig.nil_ls.setup {
+              -- Server-specific settings. See `:help lspconfig-setup`
+              settings = {
+                ['nil_ls'] = {},
+              },
+            }
+
+
             -- Brief aside: **What is LSP?**
             --
             -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -668,6 +684,7 @@ require('lazy').setup({
             end,
             formatters_by_ft = {
                 lua = { 'stylua' },
+                nix = { 'alejandra' },
                 -- Conform can also run multiple formatters sequentially
                 -- python = { "isort", "black" },
                 --
